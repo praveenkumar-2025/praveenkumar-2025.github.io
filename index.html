@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>| PRAVEEN KUMAR .S Full Stack Developer & UI/UX Designer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3f51b5;
+      --accent: #ff9800;
+      --dark: #22223b;
+      --light: #f8f8ff;
+      --muted: #bcbcbc;
+      --card-bg: #2a2a40;
+      --transition: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--dark);
+      color: var(--light);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(120deg, var(--card-bg) 60%, var(--primary) 100%);
+      padding: 50px 0 40px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+    }
+    header h1 span {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    header p {
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: 1.2rem;
+    }
+    nav {
+      margin: 35px 0 0 0;
+    }
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      margin: 0 18px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color var(--transition);
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition);
+      margin: 0 auto;
+    }
+    nav a:hover, nav a.active {
+      color: var(--accent);
+    }
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-img {
+      flex: 1 1 220px;
+      max-width: 260px;
+      border-radius: 50%;
+      box-shadow: 0 4px 24px #0004;
+      border: 6px solid var(--primary);
+      background: #23233a;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+    }
+    .about-img img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+    .about-text {
+      flex: 2 1 340px;
+      min-width: 260px;
+    }
+    .about-text h2 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .about-text p {
+      color: var(--light);
+      margin-bottom: 18px;
+    }
+    .skills {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .skill {
+      background: var(--card-bg);
+      color: var(--primary);
+      padding: 8px 18px;
+      border-radius: 18px;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px #0002;
+    }
+    /* Portfolio Section */
+    .portfolio-section h2 {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+    .portfolio-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px #0003;
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px #0005;
+    }
+    .portfolio-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform var(--transition);
+    }
+    .portfolio-card:hover .portfolio-thumb {
+      transform: scale(1.07);
+      filter: brightness(0.9);
+    }
+    .portfolio-content {
+      padding: 18px;
+    }
+    .portfolio-title {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .portfolio-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .portfolio-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .portfolio-tag {
+      background: #33334d;
+      color: var(--light);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+    .portfolio-links a {
+      color: var(--accent);
+      margin-right: 12px;
+      font-size: 1.2rem;
+      transition: color var(--transition);
+    }
+    .portfolio-links a:hover {
+      color: var(--light);
+    }
+    /* Contact Section */
+    .contact-section {
+      background: #23233a;
+      border-radius: 22px;
+      margin: 40px auto 0 auto;
+      max-width: 700px;
+      padding: 38px 30px;
+      box-shadow: 0 4px 24px #0003;
+    }
+    .contact-section h2 {
+      color: var(--accent);
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .contact-details a, .contact-details span {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: color var(--transition);
+    }
+    .contact-details a:hover {
+      color: var(--accent);
+    }
+    .social-links {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .social-links a {
+      color: var(--primary);
+      font-size: 1.6rem;
+      transition: color var(--transition), transform var(--transition);
+    }
+    .social-links a:hover {
+      color: var(--accent);
+      transform: scale(1.15);
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-text {
+        min-width: unset;
+      }
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .about-text h2, .portfolio-section h2, .contact-section h2 {
+        font-size: 1.3rem;
+      }
+      .container {
+        padding: 25px 0;
+      }
+      .contact-section {
+        padding: 22px 10px;
+      }
+      .about-img {
+        height: 160px;
+      }
+      .about-img img {
+        width: 1000px;
+        height: 1000px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      Hi, I'm <span>PRAVEEN KUMAR .S</span>
+    </h1>
+    <p>
+      Full Stack Developer,  &nbsp;|&nbsp; UI/UX Designer
+    </p>
+    <nav>
+      <a href="#about" class="active">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container" id="about">
+    <section class="about-section">
+      <div class="about-img">
+        <img src="profile.jpg" alt="Profile photo">
+      </div>
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          I'm a versatile <b>Full Stack Developer</b> and <b>UI/UX Designer,pen tester </b> with a passion for building seamless digital experiences. I blend technical expertise in web and app development with creative design thinking to deliver user-centric solutions that are both functional and beautiful.
+        </p>
+        <div class="skills">
+          <span class="skill"><i class="fa-brands fa-html5"></i> HTML5</span>
+          <span class="skill"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+          <span class="skill"><i class="fa-brands fa-js"></i> JavaScript</span>
+          <span class="skill"><i class="fa-brands fa-react"></i> React</span>
+          <span class="skill"><i class="fa-brands fa-node-js"></i> Node.js</span>
+          <span class="skill"><i class="fa-solid fa-database"></i> MongoDB</span>
+          <span class="skill"><i class="fa-brands fa-figma"></i> Figma, </span>
+          <span class="skill"><i class="fa-solid fa-palette"></i> UI/UX</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container portfolio-section" id="portfolio">
+    <h2>My Work</h2>
+    <div class="portfolio-grid">
+      <!-- Portfolio Item 1 -->
+      <div class="portfolio-card">
+        <img class="portfolio-thumb" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Web App Project">
+        <div class="portfolio-content">
+          <div class="portfolio-title">Ai: web scrapper tool. (python (modules: beautifulsoup,pandas).</div>
+          <div class="portfolio-desc">A productivity web app for teams, featuring real-time collaboration, built with (python (modules: beautiful soup,pandas).</div>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">React</span>
+            <span class="portfolio-tag">Node.js</span>
+            <span class="portfolio-tag">MongoDB</span>
+          </div>
+          <div class="portfolio-links">
+            <a href="#" title="Live Demo"><i class="fa-solid fa-link"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio Item 2 -->
+      <div class="portfolio-card">
+        <img class="portfolio-thumb" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="UI/UX Project">
+        <div class="portfolio-content">
+          <div class="portfolio-title">Warehouse robot simulation using a*algorithm.</div>
+          <div class="portfolio-desc">: In robot navigation, A* helps avoid obstacles while optimizing travel time, using grid-based or node-based maps where obstacles are marked as unwalkable.
+
+Key Heuristics: Common heuristics (e.g., Manhattan or Euclidean distance) estimate remaining distance to the goal, ensuring efficiency—critical for real-time warehouse robot operations.</div>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">UI/UX</span>
+            <span class="portfolio-tag">Figma</span>
+          </div>
+          <div class="portfolio-links">
+            <a href="#" title="Figma File"><i class="fa-brands fa-figma"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio Item 3 -->
+      <div class="portfolio-card">
+        <img class="portfolio-thumb" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Landing Page Project">
+        <div class="portfolio-content">
+          <div class="portfolio-title"> database management system </div>
+          <div class="portfolio-desc">Core Functionality: A DBMS for a courier management system tracks shipments, manages customer/driver data, and handles order processing, delivery status, and payment transactions in a centralized database.
+Key Features: Includes real-time package tracking, automated route optimization, customer/driver portals, and analytics for delivery performance and revenue insights.
+Database Design: Relational tables (e.g., Customers, Orders, Drivers, Shipments) with SQL queries for CRUD operations, joins for reporting, and indexes for fast lookups..</div>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">HTML</span>
+            <span class="portfolio-tag">CSS</span>
+            <span class="portfolio-tag">JavaScript</span>
+          </div>
+          <div class="portfolio-links">
+            <a href="#" title="Live Demo"><i class="fa-solid fa-link"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="contact">
+    <section class="contact-section">
+      <h2>Contact Me</h2>
+      <div class="contact-details">
+        <a href="mailto:praveenkumar22012025@gmail.com"><i class="fa-solid fa-envelope"></i> praveenkumar22012025@gmail.com</a>
+        <span><i class="fa-solid fa-phone"></i> +91 9176076445</span>
+        <span><i class="fa-solid fa-location-dot"></i> Chennai, India</span>
+      </div>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/praveen-kumar-s-b548982b1" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </section>
+  </div>
+
+  <footer style="text-align:center; color:var(--muted); padding:20px 0 10px 0;">
+    &copy; 2025 PRAVEEN KUMAR .S. Crafted with <span style="color:var(--accent);">&hearts;</span> | Full Stack Developer & UI/UX Designer Portfolio
+  </footer>
+
+  <!-- Smooth Scroll JS -->
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          e.preventDefault();
+          window.scrollTo({
+            top: target.offsetTop - 10,
+            behavior: 'smooth'
+          });
+          document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+          this.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
